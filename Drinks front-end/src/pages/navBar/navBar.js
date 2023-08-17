@@ -46,7 +46,7 @@ const NavigationBar = () => {
           <Nav.Link href="cocktails">Cocktails</Nav.Link>
           <Nav.Link href="#contact">Contact</Nav.Link>
         </Nav>
-        <Form
+        {/* <Form
           className="d-flex"
           onSubmit={handleSearch}
         >
@@ -61,7 +61,7 @@ const NavigationBar = () => {
             <Button variant="outline-success" type="submit">
             Search
             </Button>
-          </Form>
+          </Form> */}
       </Navbar.Collapse>
     </Navbar>
     

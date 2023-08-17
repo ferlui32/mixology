@@ -125,7 +125,7 @@ useEffect(()=>{
         <img src={loupeImage} alt="Search" className="search-icon" />
         {/* <button onClick={handleSearch}>Search</button> */}
       </div>
-      <Dropdown>
+      {/* <Dropdown>
       <Dropdown.Toggle variant="success" id="dropdown-basic">
         Select Category
       </Dropdown.Toggle>
@@ -140,7 +140,7 @@ useEffect(()=>{
             </Dropdown.Item>
           ))}
         </Dropdown.Menu>
-    </Dropdown>
+    </Dropdown> */}
       <div className={windowWidth >= breakpoint ? 'drink-container' : 'drink-carousel'}>
       {windowWidth < breakpoint ? ( // Check if the window width is greater than the breakpoint
         <Slider {...carouselSettings}>
