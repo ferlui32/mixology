@@ -1,0 +1,31 @@
+/* Add this CSS to your stylesheet or style block */
+
+  .drink-item img {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 4px 4px 8px rgb(39, 39, 47); /* Add a shadow effect to the image */
+}
+
+  .drink-item {
+    /* flex-basis: calc(80% - 10px); */
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px; /* Add rounded corners for a softer look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+    background-color: whitesmoke;
+  }
+  .drink-name{
+    color: rgb(215, 59, 23);
+    font-size: x-large;
+    padding-top:10px
+  }
+
+ .popup {
+    text-align: justify;
+ }
+
+ .custom-tooltip {
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+  padding: 0px;
+  
+}
