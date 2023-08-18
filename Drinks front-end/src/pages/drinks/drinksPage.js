@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import serviceApi from '../../services/Api'; // Import your serviceApi
 import Slider from 'react-slick';
 import Drink from '../../components/DrinkCard';
-import { useParams } from 'react-router-dom';
-import Dropdown from 'react-bootstrap/Dropdown';
 
 import "../../pages/drinks/drinks.css"
 import 'slick-carousel/slick/slick.css';
@@ -14,20 +12,15 @@ const App = () => {
   
   const [drinks, setDrinks] = useState([]);
   const [drinkCateg, setDrinkCateg]= useState([])
-  const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState(''); // New state for the search term
-  const [searchDrinkCategory, setSearchDrinkCategry]=useState('')
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const drinksPerPage = 20;
-  const totalDrinks = 600; // Set the total number of drinks (if known)
   const breakpoint = 768
-  
-  
 
+  useEffect(()=>{
+    
+  })
+  
   const fetchDrinks = () => {
-    
-    // Use the serviceApi.searchDrinks function if a searchTerm is provided, otherwise, use serviceApi.getAll
-    
     const apiCall = searchTerm ? serviceApi.searchDrinks(searchTerm) : serviceApi.getAll();
 
     apiCall
@@ -41,7 +34,6 @@ const App = () => {
       });
   };
 
-    
 useEffect(()=>{
   const apiCategory = serviceApi.getCategory()
   apiCategory
@@ -53,7 +45,6 @@ useEffect(()=>{
         setDrinkCateg([]);
       });
 },[])
-   
 
   useEffect(() => {
     fetchDrinks();
@@ -87,31 +78,7 @@ useEffect(()=>{
       },
     ],
   };
-
-  const handleCategoryChange = (selectedCategory) => {
-    const drinkCat = selectedCategory.replace(/\s+/g, '_')
-    
-    setSearchDrinkCategry(drinkCat);
-    console.log(searchDrinkCategory)
-    const fetchDrink = () => {
-    
-      const apiCall = serviceApi.searchDrinksCateg(searchDrinkCategory);
-      
-      apiCall
-        .then((response) => {
-          const newDrinks = response.drinks;
-          console.log(response.drinks)
-          setDrinks(newDrinks);
-        })
-        .catch((error) => {
-          console.error('Error fetching drinks:', error);
-          setDrinks([]);
-        });
-    };
-   
-
-  };
-
+  
   return (
     <div className='drinksPage'>
       {/* Search input and button */}
@@ -123,24 +90,8 @@ useEffect(()=>{
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <img src={loupeImage} alt="Search" className="search-icon" />
-        {/* <button onClick={handleSearch}>Search</button> */}
       </div>
-      {/* <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
-        Select Category
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-          {drinkCateg.map((category) => (
-            <Dropdown.Item
-              key={category.strCategory}
-              onClick={() => handleCategoryChange(category.strCategory)} // Handle category change
-            >
-              {category.strCategory}
-            </Dropdown.Item>
-          ))}
-        </Dropdown.Menu>
-    </Dropdown> */}
+      
       <div className={windowWidth >= breakpoint ? 'drink-container' : 'drink-carousel'}>
       {windowWidth < breakpoint ? ( // Check if the window width is greater than the breakpoint
         <Slider {...carouselSettings}>
@@ -155,15 +106,6 @@ useEffect(()=>{
         ))
       )}
     </div>
-    
-      {/* <div>
-        <button onClick={handlePrevPage} disabled={currentPage === 1}>
-          Previous Page
-        </button>
-        <button onClick={handleNextPage} disabled={currentPage === Math.ceil(totalDrinks / drinksPerPage)}>
-          Next Page
-        </button>
-      </div> */}
     </div>
   );
 };
