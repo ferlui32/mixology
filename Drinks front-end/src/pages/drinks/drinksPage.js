@@ -6,6 +6,7 @@ import Drink from '../../components/DrinkCard';
 import "../../pages/drinks/drinks.css"
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+// import Carousel from 'react-bootstrap/Carousel'
 import loupeImage from '../../images/loupe.png'
 
 const App = () => {
@@ -63,15 +64,20 @@ useEffect(()=>{
     };
   }, []);
 
+const [activeSlide, setActiveSlide]=useState(0)
+
   const carouselSettings = {
-    dots: false,
+    dots: true,
     infinite: true,
+    className: "center",
+    centerMode: true,
+    centerPadding: "60px",
     speed: 500,
-    slidesToShow: 1, // Number of drinks shown at once
+    slidesToShow: 3, // Number of drinks shown at once
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 768, // Adjust the breakpoint based on your design and device
+        breakpoint: 768, // Adjust the breakpoint based on design and device
         settings: {
           slidesToShow: 1,
         },
@@ -94,11 +100,13 @@ useEffect(()=>{
       
       <div className={windowWidth >= breakpoint ? 'drink-container' : 'drink-carousel'}>
       {windowWidth < breakpoint ? ( // Check if the window width is greater than the breakpoint
+      
         <Slider {...carouselSettings}>
-          {drinks.map((drink, index) => (
+            {drinks.map((drink, index) => (
               <Drink key={index} drink={drink} />
-          ))}
-        </Slider>
+            ))}
+          </Slider>
+
       ) : (
         // Render the regular layout when window width is smaller than or equal to the breakpoint
         drinks.map((drink, index) => (

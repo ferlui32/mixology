@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import './navBar.css'
 import logo from '../../images/Mixology1.png'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const NavigationBar = () => {
   return (
